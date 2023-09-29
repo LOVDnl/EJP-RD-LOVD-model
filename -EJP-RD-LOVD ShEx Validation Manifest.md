@@ -1,4 +1,4 @@
-the [manifest](https://gist.github.com/ericprud/aab227b0d6880bb307c9a99feb52c72d#file-manifest-yaml) can be used in:
-* ShEx.JS [shex-simple interface](https://shex.io/webapps/shex.js/doc/shex-simple.html?manifestURL=https://gist.githubusercontent.com/ericprud/aab227b0d6880bb307c9a99feb52c72d/raw/f5fe4d160f737b350d387e1c4df9ba208e65fc48/.manifest.yaml)
+the [manifest](https://gist.github.com/ericprud/4c2b0a7eac60e3b8eade6fd35215d715#file-manifest-yaml) can be used in:
+* ShEx.JS [shex-simple interface](https://shex.io/webapps/shex.js/doc/shex-simple.html?manifestURL=https://gist.githubusercontent.com/ericprud/4c2b0a7eac60e3b8eade6fd35215d715/raw/b00fca0aae4ebcf3930fc45450459322d0129204/.manifest.yaml)
   
-using the [rawlink](  https://gist.githubusercontent.com/ericprud/aab227b0d6880bb307c9a99feb52c72d/raw/bf407555cb016d7338d92d9b709bd85d9ec48c96/.manifest.yaml) address
+using the [rawlink](  https://gist.githubusercontent.com/ericprud/4c2b0a7eac60e3b8eade6fd35215d715/raw/b00fca0aae4ebcf3930fc45450459322d0129204/.manifest.yaml) address
