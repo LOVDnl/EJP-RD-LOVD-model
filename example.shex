@@ -1,0 +1,90 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX indiv: <https://databases.lovd.nl/shared/individuals/00000125#>
+PREFIX sio: <https://sio.semanticscience.org/resource/SIO_>
+PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
+
+<#PatientIdentifierShape> CLOSED {
+                         a          [sio:000115];   # identifier
+                         rdfs:label ["Identifier"]?;
+  /*denotes           */ sio:000020 @<#PatientRoleShape>;
+  /*has value         */ sio:000300 /[0-9]+/
+}
+
+<#PersonShape> CLOSED {
+                         a          [sio:000498];  # person
+                         rdfs:label ["Person"]?;
+  /*has identifier    */ sio:000671 @<#PatientIdentifierShape>;
+  /*has role          */ sio:000228 @<#PatientRoleShape>;
+  /*has attribute     */ sio:000008 @<#DiagnosisMeasurementProcess>;
+                         sio:000008 @<#GenotypeAttribute>+
+}
+
+<#PatientRoleShape> CLOSED {
+                         a          [sio:000016];  # role
+                         a          [<http://purl.obolibrary.org/obo/OBI_0000093>];
+                         rdfs:label ["Patient role"];
+  /*is realized in    */ sio:000356 @<#DiagnosisMeasurementProcess>;
+                         sio:000356 @<#GeneticMeasurementProcess>
+}
+
+<#DiagnosisMeasurementProcess> CLOSED {
+                         a          [sio:000006];  # process
+                         a          [ncit:C15220]; # Diagnosis
+                         rdfs:label ["Diagnosis measurement process"];
+  /*has output        */ sio:000229 @<#DiagnosisMeasurementOutput>
+}
+
+<#DiagnosisMeasurementOutput> CLOSED {
+                         a          [ncit:C70856]; # Observation Result
+                         a          [sio:000015];  # information content entity
+                         rdfs:label ["Diagnosis measurement output"];
+  /*refers to         */ sio:000628 @<#DiagnosisAttribute>
+}
+
+<#DiagnosisAttribute> CLOSED {
+                         a          [sio:000614];  # attribute
+                         a          [<https://www.omim.org/entry/243500>];
+                         rdfs:label ["Diagnosis attribute"];
+  /*is about          */ sio:000332 [ncit:C2991] # Disease or Disorder
+}
+
+<#GeneticMeasurementProcess> CLOSED {
+                         a          [sio:000006];  # process
+                         a          [ncit:C15709]; # Genetic Testing
+                         rdfs:label ["Genetic measurement process"];
+  /*has participant   */ sio:000132 IRI; # should a regex enforce this as a HUGO URL?
+  /*has input         */ sio:000230 [sio:010010]; # deoxyribonucleic acid
+                         sio:000230 [sio:010450]; # RNA transcript
+  /*has output        */ sio:000229 @<#GeneticMeasurementOutput>+
+}
+
+<#GenotypeAttribute> CLOSED {
+                         a          [sio:000614];
+                         a          [ncit:C103223]; # Genetic Finding
+                         rdfs:label ["Genetic attribute"]
+}
+
+<#GeneticMeasurementOutput> CLOSED {
+                         a          [sio:000015];  # information content entity
+                         a          [ncit:C45766]; # Genomic Identifier
+                         rdfs:label ["Genetic measurement output"];
+  /*refers to         */ sio:000628 @<#GenotypeAttribute>;
+  /*has part          */ sio:000028 @<#VariantOnGenome>;
+                         sio:000028 @<#VariantOnTranscription>
+}
+
+<#VariantOnGenome> CLOSED {
+                         a          [sio:000015];   # information content entity
+                         a          [ncit:C172243]; # HGVS Genomic Variation Annotation
+  /*has value         */ sio:000300 /NC_[0-9]+\.[0-9]:g\.[0-9]+G>A/
+}
+
+<#VariantOnTranscription> CLOSED {
+                         a          [sio:000015];   # information content entity
+                         a          [ncit:C172244]; # HGVS Transcript Variation Annotation
+  /*Gene identifier   */ ncit:C48664 IRI; # HUGO URL?
+  /*Gene symbol       */ ncit:C43568 ["IVD"];
+  /*NCBI transcript ID*/ ncit:C171335 /NM_[0-9]+\.[0-9]/;
+  /*has value         */ sio:000300 /NM_[0-9]+\.[0-9]:[c]\.[0-9]{3}(\+1G>A)?/
+}
+

@@ -1,0 +1,20 @@
+- schemaLabel: some example schema
+  schemaURL: example.shex
+  dataLabel: and example data
+  dataURL: example.ttl
+  queryMap: |-
+    <https://databases.lovd.nl/shared/variants/0000001345#00000064>@<#VariantOnTranscription>,
+    <https://databases.lovd.nl/shared/variants/0000001344#00000064>@<#VariantOnTranscription>,
+    <https://databases.lovd.nl/shared/variants/0000001345#vog>@<#VariantOnGenome>,
+    <https://databases.lovd.nl/shared/variants/0000001344#vog>@<#VariantOnGenome>,
+    <https://databases.lovd.nl/shared/variants/0000001345>@<#GeneticMeasurementOutput>,
+    <https://databases.lovd.nl/shared/variants/0000001344>@<#GeneticMeasurementOutput>,
+    <https://databases.lovd.nl/shared/screenings/0000000117#genotype>@<#GenotypeAttribute>,
+    <https://databases.lovd.nl/shared/screenings/0000000117>@<#GeneticMeasurementProcess>,
+    indiv:diagnosis@<#DiagnosisAttribute>,
+    indiv:findings@<#DiagnosisMeasurementOutput>,
+    indiv:examination@<#DiagnosisMeasurementProcess>,
+    indiv:role@<#PatientRoleShape>,
+    <https://databases.lovd.nl/shared/individuals/00000125>@<#PersonShape>,
+    indiv:identifier@<#PatientIdentifierShape>,
+  status: conformant

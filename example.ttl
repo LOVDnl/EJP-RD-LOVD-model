@@ -1,0 +1,155 @@
+
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX indiv: <https://databases.lovd.nl/shared/individuals/00000125#>
+PREFIX sio: <https://sio.semanticscience.org/resource/SIO_>
+PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
+
+# Example TTL file, based on https://databases.lovd.nl/shared/individuals/00000125.
+# This Identifier is an Identifier;
+indiv:identifier a sio:000115;
+  # has label "Identifier";
+  rdfs:label "Identifier";
+  # denotes a Role;
+  sio:000020 indiv:role;
+  # has value "00000125".
+  sio:000300 "00000125" .
+
+# This Individual is a Person;
+<https://databases.lovd.nl/shared/individuals/00000125> a sio:000498;
+  # has label "Person";
+  rdfs:label "Person";
+  # has an identifier;
+  sio:000671 indiv:identifier;
+  # has a Role;
+  sio:000228 indiv:role;
+  # has attributes Examination and Genotype.
+  sio:000008 indiv:examination,
+    <https://databases.lovd.nl/shared/screenings/0000000117#genotype> .
+
+# This Role is a Role and a Patient role;
+indiv:role a sio:000016,
+    <http://purl.obolibrary.org/obo/OBI_0000093>;
+  # has label "Patient role";
+  rdfs:label "Patient role";
+  # is realized in Examination and Screening.
+  sio:000356 indiv:examination,
+    <https://databases.lovd.nl/shared/screenings/0000000117> .
+
+# Examination. This is the "Diagnosis measurement process".
+# This Examination is a Process and a Diagnosis; (I don't agree with the latter; it would better be described as a "Diagnostic procedure" (http://purl.obolibrary.org/obo/NCIT_C18020).)
+indiv:examination a sio:000006,
+    ncit:C15220;
+  # has label "Diagnosis measurement process";
+  rdfs:label "Diagnosis measurement process";
+  # has output Findings.
+  sio:000229 indiv:findings .
+
+# Findings. This is the "Diagnosis output".
+# There are actually no values here. There are units and frequency, but it's not clear what we can store here.
+# These Findings are an Observation result and an Information content entity;
+indiv:findings a ncit:C70856,
+    sio:000015;
+  # has label "Diagnosis measurement output";
+  rdfs:label "Diagnosis measurement output";
+  # refers to Diagnosis.
+  sio:000628 indiv:diagnosis .
+
+# Diagnosis. This is the "Diagnosis attribute".
+# Diagnosis is a Attribute and Isovaleric acidemia;
+indiv:diagnosis a sio:000614,
+    <https://www.omim.org/entry/243500>;
+  # has label "Diagnosis attribute";
+  rdfs:label "Diagnosis attribute";
+  # is about Disease or disorder.
+  sio:000332 ncit:C2991 .
+
+# Screening. This is the "Genotype measurement process".
+# This Screening is a Process and a Genetic Testing;
+<https://databases.lovd.nl/shared/screenings/0000000117> a sio:000006,
+    ncit:C15709;
+  # has label "Genetic measurement process";
+  rdfs:label "Genetic measurement process";
+  # has participant IVD gene; (this was added by me; I am trying to explain genes are screened and couldn't find a better relationship than participant; the example data uses SIO_000229, has_output, which makes no sense at all.)
+  sio:000132 <https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:6186>;
+  # has input DNA and RNA;
+  sio:000230 sio:010010,
+    sio:010450;
+  # has output Variants.
+  sio:000229 <https://databases.lovd.nl/shared/variants/0000001344>,
+    <https://databases.lovd.nl/shared/variants/0000001345> .
+
+# Genotype. This is the "Genotype attribute". There is actually no data here, so what is the sense?
+# This Genotype is an Attribute and a Genetic finding.
+<https://databases.lovd.nl/shared/screenings/0000000117#genotype> a sio:000614,
+    ncit:C103223;
+  # has label "Genetic attribute".
+  rdfs:label "Genetic attribute".
+
+# Genetic code. This doesn't seem to have a name in the graph, it's merely described as "HGVS/OMIM/HGNC genetic code".
+# This Genetic code is an Information content entity and a Genomic identifier;
+<https://databases.lovd.nl/shared/variants/0000001344> a sio:000015,
+    ncit:C45766;
+  # has label "Genetic measurement output";
+  rdfs:label "Genetic measurement output";
+  # refers to Genotype; (I don't know why, because Genotype doesn't contain any data.)
+  sio:000628 <https://databases.lovd.nl/shared/screenings/0000000117#genotype>;
+  # has part VOG + VOTs. I added this myself, as I don't want to add loose values.
+  sio:000028 <https://databases.lovd.nl/shared/variants/0000001344#vog>,
+    <https://databases.lovd.nl/shared/variants/0000001344#00000064> .
+
+# VOG (added by me).
+# This VOG is an Information content entity and HGVS Genomic Variation Annotation;
+<https://databases.lovd.nl/shared/variants/0000001344#vog> a sio:000015,
+    ncit:C172243;
+  # has value "NC_000015.9:g.40702997G>A".
+  sio:000300 "NC_000015.9:g.40702997G>A" .
+
+# VOT (added by me).
+# This VOT is an Information content entity and HGVS Transcript Variation Annotation;
+<https://databases.lovd.nl/shared/variants/0000001344#00000064> a sio:000015,
+    ncit:C172244;
+  # Gene identifier;
+  ncit:C48664 <https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:6186>;
+  # Gene symbol;
+  ncit:C43568 "IVD";
+  # NCBI transcript identifier;
+  ncit:C171335 "NM_002225.3";
+  # has value "NM_002225.3:c.465+1G>A".
+  sio:000300 "NM_002225.3:c.465+1G>A" .
+
+# Genetic code. This doesn't seem to have a name in the graph, it's merely described as "HGVS/OMIM/HGNC genetic code".
+# This Genetic code is an Information content entity and a Genomic identifier;
+<https://databases.lovd.nl/shared/variants/0000001345> a sio:000015,
+    ncit:C45766;
+  # has label "Genetic measurement output";
+  rdfs:label "Genetic measurement output";
+  # refers to Genotype; (I don't know why, because Genotype doesn't contain any data.)
+  sio:000628 <https://databases.lovd.nl/shared/screenings/0000000117#genotype>;
+  # has part VOG + VOTs. I added this myself, as I don't want to add loose values.
+  sio:000028 <https://databases.lovd.nl/shared/variants/0000001345#vog>,
+    <https://databases.lovd.nl/shared/variants/0000001345#00000064> .
+
+# VOG (added by me).
+# This VOG is an Information content entity and HGVS Genomic Variation Annotation;
+<https://databases.lovd.nl/shared/variants/0000001345#vog> a sio:000015,
+    ncit:C172243;
+  # has value "NC_000015.9:g.40699897G>A".
+  sio:000300 "NC_000015.9:g.40699897G>A" .
+
+# VOT (added by me).
+# This VOT is an Information content entity and HGVS Transcript Variation Annotation;
+<https://databases.lovd.nl/shared/variants/0000001345#00000064> a sio:000015,
+    ncit:C172244;
+  # Gene identifier;
+  ncit:C48664 <https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:6186>;
+  # Gene symbol;
+  ncit:C43568 "IVD";
+  # NCBI transcript identifier;
+  ncit:C171335 "NM_002225.3";
+  # has value "NM_002225.3:c.214G>A".
+  sio:000300 "NM_002225.3:c.214G>A" .
+
+# FIXME: Classification? Effect?
+
+  # affects: http://semanticscience.org/resource/SIO_001158
+  # function: http://semanticscience.org/resource/SIO_000017
