@@ -1,7 +1,8 @@
 PREFIX lovd: <https://databases.lovd.nl/shared/>
+PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
+PREFIX omim: <https://www.omim.org/entry/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sio: <https://sio.semanticscience.org/resource/SIO_>
-PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
 
 # Example TTL file, based on https://databases.lovd.nl/shared/individuals/00000125.
 # This Identifier is an Identifier;
@@ -56,7 +57,7 @@ lovd:individuals\/00000125\#findings a ncit:C70856,
 # Diagnosis. This is the "Diagnosis attribute".
 # Diagnosis is a Attribute and Isovaleric acidemia;
 lovd:individuals\/00000125\#diagnosis a sio:000614,
-    <https://www.omim.org/entry/243500>;
+    omim:243500;
   # has label "Diagnosis attribute";
   rdfs:label "Diagnosis attribute";
   # is about Disease or disorder.
