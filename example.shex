@@ -1,5 +1,5 @@
+PREFIX lovd: <https://databases.lovd.nl/shared/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX indiv: <https://databases.lovd.nl/shared/individuals/00000125#>
 PREFIX sio: <https://sio.semanticscience.org/resource/SIO_>
 PREFIX ncit: <http://purl.obolibrary.org/obo/NCIT_>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
