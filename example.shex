@@ -58,7 +58,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   /*has input         */ sio:000230 [sio:010010    # deoxyribonucleic acid
                                      sio:010450    # RNA transcript
                                      sio:010043]+; # protein
-  /*has output        */ sio:000229 @<#GeneticMeasurementOutput>+
+  /*has output        */ sio:000229 @<#GeneticMeasurementOutput>*
 }
 
 <#GenotypeAttribute> CLOSED {
@@ -73,7 +73,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
                          rdfs:label xsd:string?;
   /*refers to         */ sio:000628 @<#GenotypeAttribute>;
   /*has part          */ sio:000028 @<#VariantOnGenome>;
-                         sio:000028 @<#VariantOnTranscription>
+                         sio:000028 @<#VariantOnTranscription>*
 }
 
 <#VariantOnGenome> CLOSED {
