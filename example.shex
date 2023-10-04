@@ -90,6 +90,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   /*NCBI transcript ID*/ ncit:C171335 /^[NX][MR]_[0-9]{6,9}\.[0-9]+$/;
   /*has value         */ sio:000300 /^[cn]\..+/;
   /*transcribed into  */ sio:010080 /^r\..+/?;
-  /*is translated into*/ sio:010082 /^p\..+/?
+  /*is translated into*/ sio:010082 /^p\..+/?;
+  /*ACMG clin. class. */ ncit:C168798 ["benign"
+                                       "likely benign"
+                                       "uncertain significance"
+                                       "likely pathogenic"
+                                       "pathogenic"]
 }
 

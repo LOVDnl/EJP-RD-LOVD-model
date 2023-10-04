@@ -118,8 +118,10 @@ lovd:variants\/0000001344\#00000064 a sio:000015,
   sio:000300 "c.465+1G>A";
   # is transcribed into "r.296_465del";
   sio:010080 "r.296_465del";
-  # is translated into "p.Val99Alafs*5".
-  sio:010082 "p.Val99Alafs*5" .
+  # is translated into "p.Val99Alafs*5";
+  sio:010082 "p.Val99Alafs*5";
+  # has ACMG classification "pathogenic".
+  ncit:C168798 "pathogenic" .
 
 # Genetic code. This doesn't seem to have a name in the graph, it's merely described as "HGVS/OMIM/HGNC genetic code".
 # This Genetic code is an Information content entity and a Genomic identifier;
@@ -154,5 +156,7 @@ lovd:variants\/0000001345\#00000064 a sio:000015,
   sio:000300 "c.214G>A";
   # is transcribed into "r.[214g>a; 154_243del]";
   sio:010080 "r.[214g>a,154_243del]";
-  # is translated into "p.[Asp72Asn,Leu52_Arg81del]".
-  sio:010082 "p.[Asp72Asn,Leu52_Arg81del]" .
+  # is translated into "p.[Asp72Asn,Leu52_Arg81del]";
+  sio:010082 "p.[Asp72Asn,Leu52_Arg81del]";
+  # has ACMG classification "pathogenic".
+  ncit:C168798 "pathogenic" .
