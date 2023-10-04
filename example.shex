@@ -55,8 +55,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
                          a          [ncit:C15709]; # Genetic Testing
                          rdfs:label xsd:string?;
   /*has participant   */ sio:000132 IRI /^https:\/\/identifiers.org\/hgnc:[0-9]+/*;
-  /*has input         */ sio:000230 [sio:010010]; # deoxyribonucleic acid
-                         sio:000230 [sio:010450]; # RNA transcript
+  /*has input         */ sio:000230 [sio:010010    # deoxyribonucleic acid
+                                     sio:010450    # RNA transcript
+                                     sio:010043]+; # protein
   /*has output        */ sio:000229 @<#GeneticMeasurementOutput>+
 }
 
