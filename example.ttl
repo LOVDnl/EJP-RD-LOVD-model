@@ -109,7 +109,7 @@ lovd:variants\/0000001344\#vog a sio:000015,
 lovd:variants\/0000001344\#00000064 a sio:000015,
     ncit:C172244;
   # Gene identifier;
-  ncit:C48664 <https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:6186>;
+  ncit:C48664 <https://identifiers.org/hgnc:6186>;
   # Gene symbol;
   ncit:C43568 "IVD";
   # NCBI transcript identifier;
@@ -141,7 +141,7 @@ lovd:variants\/0000001345\#vog a sio:000015,
 lovd:variants\/0000001345\#00000064 a sio:000015,
     ncit:C172244;
   # Gene identifier;
-  ncit:C48664 <https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:6186>;
+  ncit:C48664 <https://identifiers.org/hgnc:6186>;
   # Gene symbol;
   ncit:C43568 "IVD";
   # NCBI transcript identifier;

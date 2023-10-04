@@ -79,15 +79,15 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 <#VariantOnGenome> CLOSED {
                          a          [sio:000015];   # information content entity
                          a          [ncit:C172243]; # HGVS Genomic Variation Annotation
-  /*has value         */ sio:000300 /NC_[0-9]+\.[0-9]:g\.[0-9]+G>A/
+  /*has value         */ sio:000300 /^NC_[0-9]{6}\.[0-9]+:g\..+/
 }
 
 <#VariantOnTranscription> CLOSED {
                          a          [sio:000015];   # information content entity
                          a          [ncit:C172244]; # HGVS Transcript Variation Annotation
-  /*Gene identifier   */ ncit:C48664 IRI; # HUGO URL?
-  /*Gene symbol       */ ncit:C43568 ["IVD"];
-  /*NCBI transcript ID*/ ncit:C171335 /NM_[0-9]+\.[0-9]/;
-  /*has value         */ sio:000300 /NM_[0-9]+\.[0-9]:[c]\.[0-9]{3}(\+1G>A)?/
+  /*Gene identifier   */ ncit:C48664 IRI /^https:\/\/identifiers.org\/hgnc:[0-9]+/;
+  /*Gene symbol       */ ncit:C43568 xsd:string;
+  /*NCBI transcript ID*/ ncit:C171335 /^[NX][MR]_[0-9]{6,9}\.[0-9]+$/;
+  /*has value         */ sio:000300 /^[cn]\..+/
 }
 
