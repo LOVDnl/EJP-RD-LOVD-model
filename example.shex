@@ -16,16 +16,16 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
                          rdfs:label xsd:string?;
   /*has identifier    */ sio:000671 @<#PatientIdentifierShape>;
   /*has role          */ sio:000228 @<#PatientRoleShape>;
-  /*has attribute     */ sio:000008 @<#DiagnosisMeasurementProcess>;
-                         sio:000008 @<#GenotypeAttribute>+
+  /*has attribute     */ sio:000008 @<#DiagnosisMeasurementProcess>?;
+                         sio:000008 @<#GenotypeAttribute>*
 }
 
 <#PatientRoleShape> CLOSED {
                          a          [sio:000016];  # role
                          a          [<http://purl.obolibrary.org/obo/OBI_0000093>];
                          rdfs:label xsd:string?;
-  /*is realized in    */ sio:000356 @<#DiagnosisMeasurementProcess>;
-                         sio:000356 @<#GeneticMeasurementProcess>
+  /*is realized in    */ sio:000356 @<#DiagnosisMeasurementProcess>?;
+                         sio:000356 @<#GeneticMeasurementProcess>*
 }
 
 <#DiagnosisMeasurementProcess> CLOSED {
