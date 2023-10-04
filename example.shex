@@ -79,7 +79,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 <#VariantOnGenome> CLOSED {
                          a          [sio:000015];   # information content entity
                          a          [ncit:C172243]; # HGVS Genomic Variation Annotation
-  /*has value         */ sio:000300 /^NC_[0-9]{6}\.[0-9]+:g\..+/
+  /*has value         */ sio:000300 /^NC_[0-9]{6}\.[0-9]+:g\..+/+
 }
 
 <#VariantOnTranscription> CLOSED {
@@ -88,6 +88,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   /*Gene identifier   */ ncit:C48664 IRI /^https:\/\/identifiers.org\/hgnc:[0-9]+/;
   /*Gene symbol       */ ncit:C43568 xsd:string;
   /*NCBI transcript ID*/ ncit:C171335 /^[NX][MR]_[0-9]{6,9}\.[0-9]+$/;
-  /*has value         */ sio:000300 /^[cn]\..+/
+  /*has value         */ sio:000300 /^[cn]\..+/;
+  /*transcribed into  */ sio:010080 /^r\..+/?;
+  /*is translated into*/ sio:010082 /^p\..+/?
 }
 
