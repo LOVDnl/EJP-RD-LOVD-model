@@ -70,7 +70,7 @@ lovd:screenings\/0000000117 a sio:000006,
   # has label "Genetic measurement process";
   rdfs:label "Genetic measurement process";
   # has participant IVD gene; (this was added by me; I am trying to explain genes are screened and couldn't find a better relationship than participant; the example data uses SIO_000229, has_output, which makes no sense at all.)
-  sio:000132 <https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:6186>;
+  sio:000132 <https://identifiers.org/hgnc:6186>;
   # has input DNA and RNA;
   sio:000230 sio:010010,
     sio:010450;
