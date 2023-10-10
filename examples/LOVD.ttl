@@ -4,7 +4,8 @@ PREFIX omim: <https://www.omim.org/entry/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sio: <https://sio.semanticscience.org/resource/SIO_>
 
-# Example TTL file, based on https://databases.lovd.nl/shared/individuals/00000125.
+## Example TTL file, based on https://databases.lovd.nl/shared/individuals/00000125.
+# EJP-RD CDE standard element.
 # This Identifier is an Identifier;
 lovd:individuals\/00000125\#identifier a sio:000115;
   # has label "Identifier";
@@ -14,6 +15,7 @@ lovd:individuals\/00000125\#identifier a sio:000115;
   # has value "00000125".
   sio:000300 "00000125" .
 
+# Individual; an EJP-RD CDE standard element.
 # This Individual is a Person;
 lovd:individuals\/00000125 a sio:000498;
   # has label "Person";
@@ -26,6 +28,7 @@ lovd:individuals\/00000125 a sio:000498;
   sio:000008 lovd:individuals\/00000125\#examination,
     lovd:screenings\/0000000117\#genotype .
 
+# Role; an EJP-RD CDE standard element.
 # This Role is a Role and a Patient role;
 lovd:individuals\/00000125\#role a sio:000016,
     <http://purl.obolibrary.org/obo/OBI_0000093>;
@@ -35,8 +38,9 @@ lovd:individuals\/00000125\#role a sio:000016,
   sio:000356 lovd:individuals\/00000125\#examination,
     lovd:screenings\/0000000117 .
 
-# Examination. This is the "Diagnosis measurement process".
-# This Examination is a Process and a Diagnosis; (I don't agree with the latter; it would better be described as a "Diagnostic procedure" (http://purl.obolibrary.org/obo/NCIT_C18020).)
+# Examination; an EJP-RD CDE standard element. This is the "Diagnosis measurement process".
+# This Examination is a Process and a Diagnosis;
+# FIXME: I don't agree with the latter; wouldn't it better be described as a "Diagnostic procedure" (ncit:C18020)?
 lovd:individuals\/00000125\#examination a sio:000006,
     ncit:C15220;
   # has label "Diagnosis measurement process";
@@ -44,9 +48,9 @@ lovd:individuals\/00000125\#examination a sio:000006,
   # has output Findings.
   sio:000229 lovd:individuals\/00000125\#findings .
 
-# Findings. This is the "Diagnosis output".
-# There are actually no values here. There are units and frequency, but it's not clear what we can store here.
+# Findings; an EJP-RD CDE standard element. This is the "Diagnosis output".
 # These Findings are an Observation result and an Information content entity;
+# FIXME: There are actually no values here. There are units and frequency, but it's not clear what we can store here.
 lovd:individuals\/00000125\#findings a ncit:C70856,
     sio:000015;
   # has label "Diagnosis measurement output";
@@ -54,7 +58,7 @@ lovd:individuals\/00000125\#findings a ncit:C70856,
   # refers to Diagnosis.
   sio:000628 lovd:individuals\/00000125\#diagnosis .
 
-# Diagnosis. This is the "Diagnosis attribute".
+# Diagnosis; an EJP-RD CDE standard element. This is the "Diagnosis attribute".
 # Diagnosis is a Attribute and Isovaleric acidemia;
 lovd:individuals\/00000125\#diagnosis a sio:000614,
     omim:243500;
@@ -63,13 +67,14 @@ lovd:individuals\/00000125\#diagnosis a sio:000614,
   # is about Disease or disorder.
   sio:000332 ncit:C2991 .
 
-# Screening. This is the "Genotype measurement process".
+# Screening; an EJP-RD CDE standard element, with custom additions. This is the "Genotype measurement process".
 # This Screening is a Process and a Genetic Testing;
 lovd:screenings\/0000000117 a sio:000006,
     ncit:C15709;
   # has label "Genetic measurement process";
   rdfs:label "Genetic measurement process";
-  # has participant IVD gene; (this was added by me; I am trying to explain genes are screened and couldn't find a better relationship than participant; the example data uses SIO_000229, has_output, which makes no sense at all.)
+  # has participant IVD gene;
+  # NOTE: This was added for LOVD; genes are screened, so they are participants, not output.
   sio:000132 <https://identifiers.org/hgnc:6186>;
   # has input DNA and RNA;
   sio:000230 sio:010010,
@@ -78,33 +83,36 @@ lovd:screenings\/0000000117 a sio:000006,
   sio:000229 lovd:variants\/0000001344,
     lovd:variants\/0000001345 .
 
-# Genotype. This is the "Genotype attribute". There is actually no data here, so what is the sense?
-# This Genotype is an Attribute and a Genetic finding.
+# Genotype; an EJP-RD CDE standard element. This is the "Genotype attribute".
+# This Genotype is an Attribute and a Genetic finding;
+# FIXME: There are actually no values here. It's not clear what we can store here.
 lovd:screenings\/0000000117\#genotype a sio:000614,
     ncit:C103223;
   # has label "Genetic attribute".
   rdfs:label "Genetic attribute".
 
-# Genetic code. This doesn't seem to have a name in the graph, it's merely described as "HGVS/OMIM/HGNC genetic code".
+# Genetic code; an EJP-RD CDE standard element, with custom additions.
+# This doesn't seem to have a name in the graph; it's merely described as "HGVS/OMIM/HGNC genetic code".
 # This Genetic code is an Information content entity and a Genomic identifier;
 lovd:variants\/0000001344 a sio:000015,
     ncit:C45766;
   # has label "Genetic measurement output";
   rdfs:label "Genetic measurement output";
-  # refers to Genotype; (I don't know why, because Genotype doesn't contain any data.)
+  # refers to Genotype;
   sio:000628 lovd:screenings\/0000000117\#genotype;
-  # has part VOG + VOTs. I added this myself, as I don't want to add loose values.
+  # has part VOG + VOTs.
+  # NOTE: This was added for LOVD; a variant contains one VOG and any number of VOTs.
   sio:000028 lovd:variants\/0000001344\#vog,
     lovd:variants\/0000001344\#00000064 .
 
-# VOG (added by me).
+# VOG; a custom element added for LOVD.
 # This VOG is an Information content entity and HGVS Genomic Variation Annotation;
 lovd:variants\/0000001344\#vog a sio:000015,
     ncit:C172243;
   # has value "NC_000015.9:g.40702997G>A".
   sio:000300 "NC_000015.9:g.40702997G>A" .
 
-# VOT (added by me).
+# VOT; a custom element added for LOVD.
 # This VOT is an Information content entity and HGVS Transcript Variation Annotation;
 lovd:variants\/0000001344\#00000064 a sio:000015,
     ncit:C172244;
@@ -123,26 +131,28 @@ lovd:variants\/0000001344\#00000064 a sio:000015,
   # has ACMG classification "pathogenic".
   ncit:C168798 "pathogenic" .
 
-# Genetic code. This doesn't seem to have a name in the graph, it's merely described as "HGVS/OMIM/HGNC genetic code".
+# Genetic code; an EJP-RD CDE standard element, with custom additions.
+# This doesn't seem to have a name in the graph; it's merely described as "HGVS/OMIM/HGNC genetic code".
 # This Genetic code is an Information content entity and a Genomic identifier;
 lovd:variants\/0000001345 a sio:000015,
     ncit:C45766;
   # has label "Genetic measurement output";
   rdfs:label "Genetic measurement output";
-  # refers to Genotype; (I don't know why, because Genotype doesn't contain any data.)
+  # refers to Genotype;
   sio:000628 lovd:screenings\/0000000117\#genotype;
-  # has part VOG + VOTs. I added this myself, as I don't want to add loose values.
+  # has part VOG + VOTs.
+  # NOTE: This was added for LOVD; a variant contains one VOG and any number of VOTs.
   sio:000028 lovd:variants\/0000001345\#vog,
     lovd:variants\/0000001345\#00000064 .
 
-# VOG (added by me).
+# VOG; a custom element added for LOVD.
 # This VOG is an Information content entity and HGVS Genomic Variation Annotation;
 lovd:variants\/0000001345\#vog a sio:000015,
     ncit:C172243;
   # has value "NC_000015.9:g.40699897G>A".
   sio:000300 "NC_000015.9:g.40699897G>A" .
 
-# VOT (added by me).
+# VOT; a custom element added for LOVD.
 # This VOT is an Information content entity and HGVS Transcript Variation Annotation;
 lovd:variants\/0000001345\#00000064 a sio:000015,
     ncit:C172244;
