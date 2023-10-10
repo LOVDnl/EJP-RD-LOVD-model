@@ -1,7 +1,7 @@
-- schemaLabel: some example schema
-  schemaURL: example.shex
-  dataLabel: and example data
-  dataURL: example.ttl
+- schemaLabel: EJP-RD-LOVD model
+  schemaURL: schemas/v.1.0/LOVD.shex
+  dataLabel: EJP-RD-LOVD example data
+  dataURL: examples/LOVD.ttl
   queryMap: |-
     lovd:variants\/0000001345\#00000064@<#VariantOnTranscription>,
     lovd:variants\/0000001344\#00000064@<#VariantOnTranscription>,
