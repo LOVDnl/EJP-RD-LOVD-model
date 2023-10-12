@@ -21,3 +21,12 @@ You can validate data files in TTL format (see the
 For an online implementation where you can directly load the example data and
  schema file, see the
  [shex-simple interface](https://shex.io/webapps/shex.js/doc/shex-simple.html?manifestURL=https://raw.githubusercontent.com/LOVDnl/EJP-RD-LOVD-model/main/.manifest.yaml).
+
+-----------
+
+![NWO logo](https://www.nwo.nl/themes/custom/nwo/assets/images/logo.svg)
+
+This publication is part of the project "Leiden FAIR variation datapoint:
+Developing a FAIR LOVD (LFVD)" (with project number 203.001.154 of the research
+programme Open Science Fund 2020/2021 which is (partly) financed by the Dutch
+Research Council (NWO).
